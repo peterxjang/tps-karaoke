@@ -1,12 +1,3 @@
-.container {
-  /*padding: 10px;*/
-}
-div.checked {
-  color: #888;
-}
-div.checked .description {
-  text-decoration: line-through;
-}
 #main {
   background: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%,rgba(255,255,255,0.95) 100%), url(http://tpskaraoke.com/wp-content/uploads/2014/03/TPS-Logo-1.jpg) center no-repeat;
   background-size: contain;

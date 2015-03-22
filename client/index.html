@@ -1,0 +1,38 @@
+<head>
+  <title>TPS Karaoke</title>
+  <meta name="viewport" content="user-scalable=no, width=device-width, minimum-scale=1.0 , initial-scale=1.0, maximum-scale=1.0" />
+</head>
+
+<body>
+  {{> sidebar}}
+  <div class="container pusher">
+    {{> menu}}
+    <div class="ui segment" id="main">
+      <header>
+        <div>
+          <div class="ui compact right floated segment">
+            {{> loginButtons align="right"}}
+          </div>
+          <h1>Todo List ({{incompleteCount}})</h1>
+           <!-- <a id="login-sign-in-link" class="login-link-text">Sign in</a> -->
+        </div>
+        <label class="hide-completed">
+          <input type="checkbox" checked="{{hideCompleted}}" />
+          Hide Completed Tasks
+        </label>
+        {{#if currentUser}}
+          <form class="new-task">
+            <div class="ui input">
+              <input type="text" name="text" placeholder="Type to add new tasks" />
+            </div>
+          </form>
+        {{/if}}
+      </header>
+      <div class="ui divided list">
+        {{#each tasks}}
+          {{> task}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</body>

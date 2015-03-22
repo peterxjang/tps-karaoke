@@ -1,0 +1,6 @@
+div.checked {
+  color: #888;
+}
+div.checked .description {
+  text-decoration: line-through;
+}
