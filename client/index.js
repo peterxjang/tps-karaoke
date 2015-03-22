@@ -32,3 +32,4 @@ Template.body.events({
 // Accounts.ui.config({
 //   passwordSignupFields: 'USERNAME_ONLY'
 // });
+// $('.ui.modal').modal();
