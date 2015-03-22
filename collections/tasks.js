@@ -1,3 +1,5 @@
+Tasks = new Mongo.Collection('tasks');
+
 Meteor.methods({
   addTask: function(text) {
     if (!Meteor.userId()) {
