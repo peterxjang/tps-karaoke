@@ -6,8 +6,12 @@
     <a class="item"><i class="calendar icon"></i>History</a>
     <a class="item"><i class="mail icon"></i>Messages</a>
     <a class="item"><i class="chat icon"></i>Discussions</a>
-    <a class="item"><i class="trophy icon"></i>Achievements</a>
-    <a class="item"><i class="shop icon"></i>Store</a>
+    <!-- <a class="item"><i class="trophy icon"></i>Achievements</a> -->
+    {{#if currentUser}}
+        <a class="item" id="sign-out"><i class="sign out icon"></i>Sign out</a>
+    {{else}}
+        <a class="item" id="sign-in"><i class="sign in icon"></i>Sign in</a>
+    {{/if}}
     <!-- <a id="login-sign-in-link" class="login-link-text item"><i class="settings icon"></i>Settings</a> -->
   </div>
 </template>

@@ -1,6 +1,15 @@
+Template.sidebar.onRendered = function() {
+  console.log('sidebar rendered');
+};
+
 Template.sidebar.events({
-  'click .item': function(event) {
-    // $('.sidebar').sidebar('toggle');
-    $('.ui.modal').modal('show');
+  'click #sign-in': function(event) {
+    $('.ui.modal').modal({
+      detachable: false
+    }).modal('show');
+  },
+  'click #sign-out': function(event) {
+    Meteor.logout();
+    $('.sidebar').sidebar('toggle');
   }
 });
