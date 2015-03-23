@@ -6,10 +6,9 @@ Template.login.events({
     username = trimInput(username);
     password = trimInput(password);
     Meteor.loginWithPassword(username, password, function(err) {
-      console.log(err);
       if (err) {
-        Meteor.logout();
-        console.log('Error!');
+        console.log(err.reason);
+        $('#login-form').form('add errors', [err.reason]);
       } else {
         $('.ui.modal').modal('hide');
         $('.sidebar').sidebar('toggle');

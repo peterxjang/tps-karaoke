@@ -4,6 +4,10 @@
     <div class="header">Sign in or Sign up!</div>
     <div class="content">
       <form id="login-form" class="ui form" action="action">
+        <div class="ui error message">
+          <div class="header">Error</div>
+          <p>Invalid username or password.</p>
+        </div>
         <div class="field">
           <label>Username</label>
           <input name="username" type="text" id="login-username" />
@@ -12,17 +16,10 @@
           <label>Password</label>
           <input name="password" type="password" id="login-password" />
         </div>
-        <!-- <div> -->
-          <input type="submit" class="ui submit button ok" id="login-button" value="Sign in" />
-        <!-- </div> -->
-        <!-- <div class="ui submit button ok">Sign in</div> -->
-        <!-- <div class="ui green ok basic inverted button">Ok</div> -->
+        <!-- <input type="submit" class="ui submit button" id="login-button" value="Sign in" /> -->
+        <!-- <div class="ui submit button">Sign in</div> -->
+        <button type="submit" class="ui submit button" value="Submit">Submit</button>
       </form> 
     </div>
-
-    <!-- <div class="actions"> -->
-      <!-- <div class="ui button">Cancel</div> -->
-      <!-- <div class="ui button">OK</div> -->
-    <!-- </div> -->
   </div>
 </template>

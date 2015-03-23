@@ -5,7 +5,11 @@ Template.sidebar.onRendered = function() {
 Template.sidebar.events({
   'click #sign-in': function(event) {
     $('.ui.modal').modal({
-      detachable: false
+      detachable: false,
+      onHidden: function() {
+        // console.log('hidden');
+        $('#login-form').form('clear');
+      }
     }).modal('show');
   },
   'click #sign-out': function(event) {
