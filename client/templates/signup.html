@@ -1,5 +1,5 @@
 <template name="signup">
-  <div class="ui small modal">
+  <div class="ui small modal" id="signup-modal">
     <i class="close icon"></i>
     <div class="header">Create an account</div>
     <div class="content">
@@ -13,7 +13,11 @@
           <label>Password</label>
           <input name="password" type="password" id="signup-password" />
         </div>
-        <buttom type="submit" class="ui submit button" value="Create an account">Create an account</buttom>
+        <div class="field">
+          <label>Retype Password</label>
+          <input name="retype-password" type="password" id="signup-retype-password" />
+        </div>
+        <button type="submit" class="ui submit button" value="Create an account">Create an account</button>
       </form>
     </div>
   </div>

@@ -4,7 +4,7 @@ Template.sidebar.onRendered = function() {
 
 Template.sidebar.events({
   'click #sign-in': function(event) {
-    $('.ui.modal').modal({
+    $('#signin-modal').modal({
       detachable: false,
       onHidden: function() {
         $('#signin-form').form('clear');

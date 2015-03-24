@@ -6,16 +6,25 @@ Template.signin.events({
     username = trimInput(username);
     password = trimInput(password);
     Meteor.loginWithPassword(username, password, function(err) {
-      console.log('hi');
       if (err) {
         $('#signin-form').form('add errors', [err.reason]);
         $('#signin-form > div.ui.error.message').show();
       } else {
-        $('.ui.modal').modal('hide');
+        $('#signin-modal').modal('hide');
         $('.sidebar').sidebar('toggle');
       }
     });
     return false;
+  },
+  'click #signup-button' : function(e) {
+    e.preventDefault();
+    $('#signup-modal').modal({
+      detachable: false,
+      onHidden: function() {
+        $('#signup-form').form('clear');
+        $('#signup-form > div.ui.error.message').hide();
+      }
+    }).modal('show');
   }
 });
 
