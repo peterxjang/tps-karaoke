@@ -1,14 +1,15 @@
-Template.login.events({
-  'submit #login-form' : function(e, t) {
+Template.signin.events({
+  'submit #signin-form' : function(e, t) {
     e.preventDefault();
-    var username = t.find('#login-username').value;
-    var password = t.find('#login-password').value;
+    var username = t.find('#signin-username').value;
+    var password = t.find('#signin-password').value;
     username = trimInput(username);
     password = trimInput(password);
     Meteor.loginWithPassword(username, password, function(err) {
+      console.log('hi');
       if (err) {
-        $('#login-form').form('add errors', [err.reason]);
-        $('#login-form > div.ui.error.message').show();
+        $('#signin-form').form('add errors', [err.reason]);
+        $('#signin-form > div.ui.error.message').show();
       } else {
         $('.ui.modal').modal('hide');
         $('.sidebar').sidebar('toggle');
