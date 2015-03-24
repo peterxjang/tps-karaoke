@@ -7,8 +7,8 @@ Template.login.events({
     password = trimInput(password);
     Meteor.loginWithPassword(username, password, function(err) {
       if (err) {
-        console.log(err.reason);
         $('#login-form').form('add errors', [err.reason]);
+        $('#login-form > div.ui.error.message').show();
       } else {
         $('.ui.modal').modal('hide');
         $('.sidebar').sidebar('toggle');

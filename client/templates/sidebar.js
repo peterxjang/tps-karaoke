@@ -7,8 +7,8 @@ Template.sidebar.events({
     $('.ui.modal').modal({
       detachable: false,
       onHidden: function() {
-        // console.log('hidden');
         $('#login-form').form('clear');
+        $('#login-form > div.ui.error.message').hide();
       }
     }).modal('show');
   },
