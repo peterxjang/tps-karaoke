@@ -3,8 +3,15 @@ Template.signup.events({
     e.preventDefault();
     var username = t.find('#signup-username').value;
     var password = t.find('#signup-password').value;
+    var passwordRetype = t.find('#signup-retype-password').value;
     username = trimInput(username);
     password = trimInput(password);
+    passwordRetype = trimInput(passwordRetype);
+    if (password !== passwordRetype) {
+      $('#signup-form').form('add errors', ['Passwords do not match!']);
+      $('#signup-form > div.ui.error.message').show();
+      return false;
+    }
     Accounts.createUser({username: username, password : password}, function(err) {
       if (err) {
         $('#signup-form').form('add errors', [err.reason]);
