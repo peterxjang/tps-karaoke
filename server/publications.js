@@ -6,3 +6,7 @@ Meteor.publish('tasks', function() {
     ]
   });
 });
+
+Meteor.publish('songs', function() {
+  return Songs.find({}, {limit: 10});
+});

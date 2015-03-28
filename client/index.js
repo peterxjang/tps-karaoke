@@ -11,6 +11,9 @@ Template.body.helpers({
   },
   incompleteCount: function() {
     return Tasks.find({checked: {$ne: true}}).count();
+  },
+  songs: function() {
+    return Songs.find();
   }
 });
 
