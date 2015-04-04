@@ -8,5 +8,5 @@ Meteor.publish('tasks', function() {
 });
 
 Meteor.publish('songs', function() {
-  return Songs.find({}, {limit: 10});
+  return Songs.find({}, {fields: {'artist': 1, 'title': 1}});
 });

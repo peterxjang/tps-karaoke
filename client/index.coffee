@@ -5,7 +5,6 @@ Template.body.helpers
     else
       return Tasks.find({}, {sort: {createdAt: -1}})
   hideCompleted: () ->
-    console.log "yoyoyo"
     return Session.get('hideCompleted')
   incompleteCount: () ->
     return Tasks.find({checked: {$ne: true}}).count()

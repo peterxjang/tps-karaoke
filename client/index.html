@@ -11,6 +11,14 @@
     {{> menu}}
     <div class="ui segment" id="main">
       <header>
+      
+      <div class="ui search dropdown">
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Sing a song!">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
         <div>
           <h1>Todo List ({{incompleteCount}})</h1>
         </div>
@@ -31,12 +39,12 @@
           {{> task}}
         {{/each}}
       </div>
-      <h1>Songs</h1>
+<!--       <h1>Songs</h1>
       <div class="ui divided list">
         {{#each songs}}
           {{> song}}
         {{/each}}
-      </div>
+      </div> -->
     </div>
   </div>
 </body>
