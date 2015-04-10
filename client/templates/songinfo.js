@@ -94,8 +94,12 @@ Template.songinfo.rendered = function() {
             '<div><a href=' + response.data[0].url +
             ' target="_blank">View complete lyrics</a><div>'
           );
-          $('.song-lyrics').hide();
+        } else {
+          $('.song-lyrics-results').html('No lyrics found');
         }
+      },
+      complete: function() {
+        $('.song-lyrics').hide();
       }
     });
   });
