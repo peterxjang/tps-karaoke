@@ -18,6 +18,20 @@ Template.songinfo.helpers({
     } else {
       return '#';
     }
+  },
+  currentSongLyrics: function() {
+    var info = Session.get('selectedSong');
+    if (info) {
+      var artist = info.artist.replace(/ /g, '%20');
+      var title = info.title.replace(/\(([^)]+)\)/g, '').replace(/ /g, '%20');
+      // return 'http://lyrics.wikia.com/api.php?func=getSong&fmt=realjson&' +
+        // 'artist=' + artist + '&song=' + title + '?callback=?';
+      return 'http://api.lyricsnmusic.com/songs?' +
+        'api_key=74fb7d12d34928ad62f09d18cd0842&' +
+        'artist=' + artist + '&track=' + title;
+    } else {
+      return '#';
+    }
   }
 });
 
@@ -31,6 +45,8 @@ Template.songinfo.rendered = function() {
     },
     onHidden: function() {
       $(this).find('.song-preview').html('Preview');
+      $('.song-lyrics-results').html('');
+      $('.song-lyrics').show();
     }
   });
 
@@ -61,5 +77,26 @@ Template.songinfo.rendered = function() {
       Template.songinfo.audioObject.pause();
       $(that).html('Preview');
     }
+  });
+
+  $('.song-lyrics').on('click', function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: $(this).attr('href'),
+      jsonp: 'callback',
+      dataType: 'jsonp',
+      data: {format: 'json'},
+      success: function(response) {
+        if (response.data.length > 0) {
+          console.log(response.data[0].snippet);
+          $('.song-lyrics-results').html(response.data[0].snippet.replace(/\n/g, '<br>'));
+          $('.song-lyrics-results').append(
+            '<div><a href=' + response.data[0].url +
+            ' target="_blank">View complete lyrics</a><div>'
+          );
+          $('.song-lyrics').hide();
+        }
+      }
+    });
   });
 };
