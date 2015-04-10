@@ -1,3 +1,5 @@
+Template.songinfo.audioObject = new Audio();
+
 Template.songinfo.helpers({
   currentSongTitle: function() {
     var info = Session.get('selectedSong');
@@ -21,10 +23,10 @@ Template.songinfo.helpers({
   }
 });
 
+// Should use Template.songinfo.events({}) instead, but conflicts with Semantic-UI modal
 $(document).on('click', '.song-preview', function(e) {
   e.preventDefault();
   var that = this;
-  // var audioObject;
   if ($(this).html() === 'Preview') {
     $(this).html('Loading...');
     $.ajax({
@@ -33,8 +35,10 @@ $(document).on('click', '.song-preview', function(e) {
         var items = response.tracks.items;
         if (items.length > 0) {
           // console.log(items[0].album.images[2].url);
-          audioObject = new Audio(items[0].preview_url);
-          audioObject.play();
+          if (Template.songinfo.audioObject.src != items[0].preview_url) {
+            Template.songinfo.audioObject = new Audio(items[0].preview_url);
+          }
+          Template.songinfo.audioObject.play();
           $(that).html('Pause');
         } else {
           $(that).html('Preview not available');
@@ -42,7 +46,7 @@ $(document).on('click', '.song-preview', function(e) {
       }
     });
   } else if ($(this).html() === 'Pause') {
-    audioObject.pause();
+    Template.songinfo.audioObject.pause();
     $(that).html('Preview');
   }
 });

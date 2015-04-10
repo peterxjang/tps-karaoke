@@ -21,10 +21,8 @@ Meteor.subscribe('songs', function onReady() {
       Session.set('selectedSong', results);
       $('#songinfo-modal').modal({
         onHide: function() {
-          if (typeof audioObject !== 'undefined') {
-            audioObject.pause();
-            $(this).find('.song-preview').html('Preview');
-          }
+          Template.songinfo.audioObject.pause();
+          $(this).find('.song-preview').html('Preview');
         }
       }).modal('show');
       $('.ui.search').search('set value', '');
