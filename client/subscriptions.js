@@ -19,13 +19,7 @@ Meteor.subscribe('songs', function onReady() {
     },
     onSelect: function(results, response) {
       Session.set('selectedSong', results);
-      $('#songinfo-modal').modal({
-        onHide: function() {
-          Template.songinfo.audioObject.pause();
-          $(this).find('.song-preview').html('Preview');
-        }
-      }).modal('show');
-      $('.ui.search').search('set value', '');
+      $('#songinfo-modal').modal('show');
     }
   });
 });
