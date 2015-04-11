@@ -89,7 +89,7 @@ Template.songinfo.rendered = function() {
   $('.song-preview').on('click', function(e) {
     e.preventDefault();
     var that = this;
-    if ($(this).html() === 'Preview') {
+    if (Template.songinfo.audioObject.paused) {
       $(this).html('Loading...');
       $.ajax({
         url: $(this).attr('href'),
@@ -106,7 +106,7 @@ Template.songinfo.rendered = function() {
           }
         }
       });
-    } else if ($(this).html() === 'Pause') {
+    } else {
       Template.songinfo.audioObject.pause();
       $(that).html('Preview');
     }
