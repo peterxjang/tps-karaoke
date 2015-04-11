@@ -65,7 +65,6 @@ Template.songinfo.rendered = function() {
             $('.song-lyrics-results').html('No lyrics found');
           },
           complete: function() {
-            // $('.song-lyrics').hide();
             $('.ui.loading.segment').removeClass('loading');
           }
         });
