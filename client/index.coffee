@@ -20,8 +20,8 @@ Template.body.events
     return false
   'change .hide-completed input': (event) ->
     Session.set('hideCompleted', event.target.checked)
-  'click #menu': (event) ->
-    $('.sidebar').sidebar('toggle')
+  # 'click #menu': (event) ->
+  #   $('.sidebar').sidebar('toggle')
 
 # // Accounts.ui.config({
 # //   passwordSignupFields: 'USERNAME_ONLY'

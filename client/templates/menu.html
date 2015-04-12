@@ -1,10 +1,17 @@
 <template name="menu">
-  <div class="large ui fixed inverted main menu">
+  <div class="large ui fixed inverted borderless main menu">
     <a class="item" id="menu">
-      <i class="content icon"></i> Menu
+      <i class="content icon"></i>
     </a>
+    <div class="fitted item">{{username}}</div>
 
     <div class="right menu">
+      <a class="item" id="search">
+        <i class="search icon"></i>
+      </a>
+      <a class="horizontally fitted item" id="settings">
+        <i class="ellipsis vertical icon"></i>
+      </a>
 <!--       <div class="item">
         <div class="ui inverted left icon input">
           <input type="text" class="form-control typeahead" autocomplete="off" spellcheck="off" data-source="songs" placeholder="Sing a song!" >
