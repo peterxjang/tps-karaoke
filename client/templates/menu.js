@@ -1,11 +1,16 @@
+Template.menu.toggleSearchMenu = function() {
+  $('#search').toggle();
+  $('#search-clicked').toggle();
+  $('#username').toggle();
+  $('#menu').toggle();
+  $('#back').toggle();
+};
+
 Template.menu.helpers({
   username: function() {
     var user = Meteor.user();
     return user ? user.username : '';
   }
-//   songs: function() {
-//     return Songs.find().fetch().map(function(it){ return it.title; });
-//   }
 });
 
 Template.menu.events({
@@ -13,6 +18,10 @@ Template.menu.events({
     $('.sidebar').sidebar('toggle');
   },
   'click #search': function(event) {
-    console.log('hi');
+    Template.menu.toggleSearchMenu();
+    $('#search-clicked input').focus();
+  },
+  'click #back': function(event) {
+    Template.menu.toggleSearchMenu();
   }
 });
