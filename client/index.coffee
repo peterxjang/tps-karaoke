@@ -27,3 +27,6 @@ Template.body.events
 # //   passwordSignupFields: 'USERNAME_ONLY'
 # // });
 # // $('.ui.modal').modal();
+
+Template.body.rendered = ->
+  $('.menu .item').tab()
