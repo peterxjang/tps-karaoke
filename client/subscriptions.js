@@ -8,6 +8,7 @@ Meteor.subscribe('songs', function onReady() {
     source: content,
     searchFields: ['title', 'artist'],
     searchFullText: true,
+    maxResults: 4,
     type: 'special',
     templates: {
       special: function(response) {
