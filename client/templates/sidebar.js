@@ -3,6 +3,9 @@ Template.sidebar.onRendered = function() {
 };
 
 Template.sidebar.events({
+  'click a': function(event) {
+    $('.sidebar').sidebar('toggle');
+  },
   'click #sign-in': function(event) {
     $('#signin-modal').modal({
       detachable: false,
