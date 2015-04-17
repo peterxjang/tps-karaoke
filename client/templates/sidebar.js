@@ -1,19 +1,11 @@
 Template.sidebar.onRendered = function() {
   console.log('sidebar rendered');
+  // $('.sidebar').sidebar('setting', 'transition', 'overlay');
 };
 
 Template.sidebar.events({
   'click a': function(event) {
     $('.sidebar').sidebar('toggle');
-  },
-  'click #sign-in': function(event) {
-    $('#signin-modal').modal({
-      detachable: false,
-      onHidden: function() {
-        $('#signin-form').form('clear');
-        $('#signin-form > div.ui.error.message').hide();
-      }
-    }).modal('show');
   },
   'click #sign-out': function(event) {
     Meteor.logout();

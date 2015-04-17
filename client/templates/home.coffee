@@ -23,10 +23,5 @@ Template.home.events
   # 'click #menu': (event) ->
   #   $('.sidebar').sidebar('toggle')
 
-# // Accounts.ui.config({
-# //   passwordSignupFields: 'USERNAME_ONLY'
-# // });
-# // $('.ui.modal').modal();
-
 Template.home.rendered = ->
   $('.menu .item').tab()

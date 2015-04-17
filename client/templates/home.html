@@ -1,10 +1,4 @@
 <template name="home">
-<!--   {{> sidebar}}
-  {{> signin}}
-  {{> signup}}
-  {{> songinfo}}
-  <div class="container pusher">
-    {{> menu}} -->
     <div class="ui segment" id="main">
     <div class="ui top attached secondary pointing menu">
       <a class="active item" data-tab="first"><i class="comment icon"></i></a>
@@ -20,29 +14,26 @@
     <div class="ui bottom attached tab segment" data-tab="second">
       Request a genre!
     </div>
-
-
-      <header>
-        <div>
-          <h1>Todo List ({{incompleteCount}})</h1>
-        </div>
-        <label class="hide-completed">
-          <input type="checkbox" checked="{{hideCompleted}}" />
-          Hide Completed Tasks
-        </label>
-        {{#if currentUser}}
-          <form class="new-task">
-            <div class="ui input">
-              <input type="text" name="text" placeholder="Type to add new tasks" />
-            </div>
-          </form>
-        {{/if}}
-      </header>
-      <div class="ui divided list">
-        {{#each tasks}}
-          {{> task}}
-        {{/each}}
+    <header>
+      <div>
+        <h1>Todo List ({{incompleteCount}})</h1>
       </div>
+      <label class="hide-completed">
+        <input type="checkbox" checked="{{hideCompleted}}" />
+        Hide Completed Tasks
+      </label>
+      {{#if currentUser}}
+        <form class="new-task">
+          <div class="ui input">
+            <input type="text" name="text" placeholder="Type to add new tasks" />
+          </div>
+        </form>
+      {{/if}}
+    </header>
+    <div class="ui divided list">
+      {{#each tasks}}
+        {{> task}}
+      {{/each}}
     </div>
-  <!-- </div> -->
+  </div>
 </template>
