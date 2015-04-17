@@ -12,6 +12,6 @@ Router.route('/', function() {
   this.render('home');
 });
 
-Router.route('/sign-in', function() {
-  this.render('sign-in');
-});
+// Router.route('/sign-in', function() {
+//   this.render('sign-in');
+// });

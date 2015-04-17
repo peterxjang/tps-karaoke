@@ -36,3 +36,4 @@
 //   passwordSignupFields: 'USERNAME_ONLY'
 // });
 // $('.ui.modal').modal();
+// Set up login services
