@@ -9,7 +9,7 @@ Template.menu.toggleSearchMenu = function() {
 Template.menu.helpers({
   username: function() {
     var user = Meteor.user();
-    return user ? user.username : '';
+    return user ? user.username || user.profile.name : '';
   }
 });
 

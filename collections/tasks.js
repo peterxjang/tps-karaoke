@@ -9,7 +9,7 @@ Meteor.methods({
       text: text,
       createdAt: new Date(),
       owner: Meteor.userId(),
-      username: Meteor.user().username
+      username: Meteor.user().username || Meteor.user().profile.name
     });
   },
   deleteTask: function(taskId) {
