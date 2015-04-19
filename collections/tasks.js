@@ -20,6 +20,7 @@ Meteor.methods({
     Tasks.remove(taskId);
   },
   setChecked: function(taskId, setChecked) {
+    console.log(Meteor.user());
     var task = Tasks.findOne(taskId);
     if (task.private && task.owner !== Meteor.userId()) {
       throw new Meteor.Error('not-authorized');

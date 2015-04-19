@@ -9,7 +9,12 @@ Template.menu.toggleSearchMenu = function() {
 Template.menu.helpers({
   username: function() {
     var user = Meteor.user();
-    return user ? user.username || user.profile.name : '';
+    // var username = user ? user.username : '';
+    // var profilename = user && user.profile ? user.profile.name : '';
+    // var email = user && user.emails ? user.emails[0].address : '';
+    // // return username || profilename || email.split('@')[0];
+    // return email;
+    return user ? user.username : '';
   }
 });
 
