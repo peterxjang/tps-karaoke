@@ -21,13 +21,17 @@ if (facebookConfig) {
 }
 
 Accounts.onCreateUser(function(options, user) {
+  user.profile = options.profile;
   if (!user.username) {
     if (user.profile) {
       user.username = user.profile.name;
-    } else if (user.email) {
-      user.username = user.email.split('@')[0];
     } else if (user.emails) {
-      user.username = user.emails[0].address.split('@')[0];
+      user.username = user.emails[0].address; //.split('@')[0];
+    } else if (user.services) {
+      if (user.services.facebook) {
+        user.username = user.services.facebook.name;
+        user.email = user.services.facebook.email;
+      }
     }
   }
   return user;
