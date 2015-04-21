@@ -8,6 +8,10 @@ Router.configure({
     // }
 });
 
+var isAdmin = function() {
+  return ((Meteor.user() || {}).profile || {}).facebookEmail === 'peter.jang@yahoo.com';
+};
+
 Router.route(
   '/',
   function() {
@@ -25,7 +29,7 @@ Router.route('/admin',
 
 Router.onBeforeAction(
   function() {
-    if ((Meteor.user() || {}).username == 'Peter Jang') {
+    if (isAdmin()) {
       this.redirect('admin');
     } else {
       this.next();
@@ -36,7 +40,7 @@ Router.onBeforeAction(
 
 Router.onBeforeAction(
   function() {
-    if ((Meteor.user() || {}).username == 'Peter Jang') {
+    if (isAdmin()) {
       this.next();
     } else {
       this.redirect('home');

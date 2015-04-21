@@ -14,13 +14,14 @@ configureFacebook = function(config) {
 // set the settings object with meteor --settings private/settings-local.json
 var facebookConfig = Meteor.settings.facebook;
 if (facebookConfig) {
-  console.log('Got settings for facebook', facebookConfig);
+  // console.log('Got settings for facebook', facebookConfig);
   configureFacebook(facebookConfig);
 } else {
-  console.log('No settings found');
+  // console.log('No settings found');
 }
 
 Accounts.onCreateUser(function(options, user) {
+  console.log(user);
   user.profile = options.profile;
   if (!user.username) {
     if (user.profile) {
@@ -34,5 +35,12 @@ Accounts.onCreateUser(function(options, user) {
       }
     }
   }
+  user.profile.facebookEmail = ((user.services || {}).facebook || {}).email;
   return user;
+});
+
+Meteor.users.deny({
+  update: function() {
+    return true;
+  }
 });
