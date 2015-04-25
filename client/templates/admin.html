@@ -6,11 +6,21 @@
       <a class="item" data-tab="second"><i class="music icon"></i></a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
-      <div class="ui form">
-        <div class="field">
-          <input type="text" placeholder="Send a message to the DJ!">
-        </div>
-      </div>
+      <ul>
+        {{#each messages}}
+          <li>{{username}} - {{text}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="second">
+      Request a genre!
+    </div>
+    <div class="ui divided list">
+      <ul>
+      {{#each songs}}
+        <li>{{artist}} - {{title}}</li>
+      {{/each}}
+      </ul>
     </div>
   </div>
 </template>

@@ -22,9 +22,9 @@ if (facebookConfig) {
 
 Accounts.onCreateUser(function(options, user) {
   console.log(user);
-  user.profile = options.profile;
+  user.profile = options.profile || {};
   if (!user.username) {
-    if (user.profile) {
+    if ((user.profile || {}).name) {
       user.username = user.profile.name;
     } else if (user.emails) {
       user.username = user.emails[0].address; //.split('@')[0];

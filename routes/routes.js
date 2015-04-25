@@ -9,7 +9,8 @@ Router.configure({
 });
 
 var isAdmin = function() {
-  return ((Meteor.user() || {}).profile || {}).facebookEmail === 'peter.jang@yahoo.com';
+  var facebookEmail = ((Meteor.user() || {}).profile || {}).facebookEmail;
+  return facebookEmail === 'peter.jang@yahoo.com';
 };
 
 Router.route(

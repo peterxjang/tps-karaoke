@@ -1,4 +1,5 @@
 Meteor.subscribe('tasks');
+Meteor.subscribe('messages');
 Meteor.subscribe('songs', function onReady() {
   // https://github.com/Semantic-Org/Semantic-UI/issues/1998
   var content = Songs.find().fetch().map(function(it) {

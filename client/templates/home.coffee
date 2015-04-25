@@ -18,6 +18,11 @@ Template.home.events
     Meteor.call('addTask', text)
     event.target.text.value = ''
     return false
+  'submit #form-message': (event) ->
+    text = event.target.message.value
+    Meteor.call('addMessage', text)
+    $('#form-message input').val('')
+    return false
   'change .hide-completed input': (event) ->
     Session.set('hideCompleted', event.target.checked)
   # 'click #menu': (event) ->
