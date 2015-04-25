@@ -20,7 +20,9 @@ Template.home.events
     return false
   'submit #form-message': (event) ->
     text = event.target.message.value
-    Meteor.call('addMessage', text)
+    Meteor.call('addMessage', text, (err) ->
+      console.log "Something wrong bro" if err
+    )
     $('#form-message input').val('')
     return false
   'change .hide-completed input': (event) ->
