@@ -74,6 +74,7 @@ Template.songinfo.rendered = function() {
     },
     onHide: function() {
       $('.ui.search').search('set value', '');
+      Template.menu.toggleSearchMenu();
     },
     onHidden: function() {
       $(this).find('.song-preview').html('Preview');
