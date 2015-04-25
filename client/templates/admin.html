@@ -1,16 +1,29 @@
 <template name="admin">
   <div class="ui segment" id="main">
-    <div>This is an admin page</div>
     <div class="ui top attached secondary pointing menu">
-      <a class="active item" data-tab="first"><i class="comment icon"></i></a>
-      <a class="item" data-tab="second"><i class="music icon"></i></a>
+      <a class="active item" data-tab="first"><i class="comment icon"></i>Messages</a>
+      <a class="item" data-tab="second"><i class="music icon"></i>Requests</a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
-      <ul>
+<!--       <ul>
         {{#each messages}}
           <li>{{createdAt}}: {{username}} - {{text}}</li>
         {{/each}}
-      </ul>
+      </ul> -->
+      <div class="ui feed">
+      {{#each messages}}
+        <div class="event">
+          <div class="content">
+            <div class="summary">
+              <a class="user">{{username}}</a> posted <div class="date">{{createdAt}}</div>
+            </div>
+            <div class="extra text">
+              {{text}}
+            </div>
+          </div>
+        </div>
+      {{/each}}
+      </div>
     </div>
     <div class="ui bottom attached tab segment" data-tab="second">
       Request a genre!
