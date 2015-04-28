@@ -21,14 +21,14 @@ Template.home.events
   'submit #form-message': (event) ->
     text = event.target.message.value
     Meteor.call('addMessage', text, (err) ->
-      console.log "Something wrong bro" if err
+      if err
+        console.log "Something wrong bro"
     )
     $('#form-message input').val('')
+    $('#form-message input').focus()
     return false
   'change .hide-completed input': (event) ->
     Session.set('hideCompleted', event.target.checked)
-  # 'click #menu': (event) ->
-  #   $('.sidebar').sidebar('toggle')
 
 Template.home.rendered = ->
   $('.menu .item').tab()
