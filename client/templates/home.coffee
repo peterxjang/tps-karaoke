@@ -32,3 +32,4 @@ Template.home.events
 
 Template.home.rendered = ->
   $('.menu .item').tab()
+

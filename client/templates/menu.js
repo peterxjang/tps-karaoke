@@ -25,3 +25,27 @@ Template.menu.events({
     Template.menu.toggleSearchMenu();
   }
 });
+
+Template.menu.rendered = function() {
+  Meteor.call('getStaticSongs', function(error, result) {
+    $('.ui.search').search({
+      source: result,
+      searchFields: ['title', 'artist'],
+      searchFullText: true,
+      maxResults: 4,
+      type: 'special',
+      templates: {
+        special: function(response) {
+          return response.results
+            .map(function(item) {
+              return Blaze.toHTMLWithData(Template.searchResults, item);
+            }).join('');
+        }
+      },
+      onSelect: function(results, response) {
+        Session.set('selectedSong', results);
+        $('#songinfo-modal').modal('show');
+      }
+    });
+  });
+};
