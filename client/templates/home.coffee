@@ -1,15 +1,15 @@
 Template.home.helpers
-  tasks: () ->
+  tasks: ->
     if (Session.get('hideCompleted'))
-      return Tasks.find({checked: {$ne: true}}, {sort: {createdAt: -1}})
+      Tasks.find({checked: {$ne: true}}, {sort: {createdAt: -1}})
     else
-      return Tasks.find({}, {sort: {createdAt: -1}})
-  hideCompleted: () ->
-    return Session.get('hideCompleted')
-  incompleteCount: () ->
-    return Tasks.find({checked: {$ne: true}}).count()
-  songs: () ->
-    return Songs.find()
+      Tasks.find({}, {sort: {createdAt: -1}})
+  hideCompleted: ->
+    Session.get('hideCompleted')
+  incompleteCount: ->
+    Tasks.find({checked: {$ne: true}}).count()
+  songs: ->
+    Songs.find()
 
 
 Template.home.events
@@ -17,16 +17,24 @@ Template.home.events
     text = event.target.text.value
     Meteor.call('addTask', text)
     event.target.text.value = ''
-    return false
+    false
   'submit #form-message': (event) ->
     text = event.target.message.value
-    Meteor.call('addMessage', text, (err) ->
+    Meteor.call 'addMessage', text, (err) ->
       if err
-        console.log "Something wrong bro"
-    )
+        $('#form-message .error.message p').html err.reason
+        $('#form-message .error.message').show()
+      else
+        $('#form-message .success.message p').html 'Message sent!'
+        $('#form-message .success.message').show()
     $('#form-message input').val('')
     $('#form-message input').focus()
-    return false
+    false
+  'click #form-message input': (event) ->
+    $('#form-message .success.message').hide()
+    $('#form-message .error.message').hide()
+  'click .close.icon': (event) ->
+    $(event.target).closest('.message').hide()
   'change .hide-completed input': (event) ->
     Session.set('hideCompleted', event.target.checked)
 

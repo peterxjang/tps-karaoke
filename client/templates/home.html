@@ -9,12 +9,17 @@
         <div class="field">
           <input type="text" name="message" placeholder="Send a message to the DJ!">
         </div>
-        <div class="inline field">
-          <button type="submit" class="ui submit button">Submit</button>
+        <div class="ui success message">
+          <i class="close icon"></i>
+          <div class="header">Success:</div>
+          <p></p>
         </div>
-        <div class="inline field">
-          <button class="ui button">Test</button>
+        <div class="ui error message">
+          <i class="close icon"></i>
+          <div class="header">Error sending message:</div>
+          <p></p>
         </div>
+        <button type="submit" class="ui submit button">Submit</button>
       </form>
     </div>
     <div class="ui bottom attached tab segment" data-tab="second">
