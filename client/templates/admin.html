@@ -3,6 +3,7 @@
     <div class="ui top attached secondary pointing menu">
       <a class="active item" data-tab="first"><i class="comment icon"></i>Messages</a>
       <a class="item" data-tab="second"><i class="music icon"></i>Requests</a>
+      <a class="item" data-tab="third"><i class="file text icon"></i>Song data</a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
 <!--       <ul>
@@ -27,6 +28,15 @@
     </div>
     <div class="ui bottom attached tab segment" data-tab="second">
       Request a genre!
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="third">
+      <form class="ui form" id="form-csv">
+        <div class="header">Upload csv:</div>
+        <div class="field">
+          <input type="file" id="file-csv" name="file-csv" />
+        </div>
+        <button type="submit" class="ui submit button">Submit</button>
+      </form>
     </div>
     <div class="ui divided list">
       <ul>
