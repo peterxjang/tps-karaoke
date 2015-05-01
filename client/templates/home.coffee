@@ -25,7 +25,7 @@ Template.home.events
         $('#form-message .error.message p').html err.reason
         $('#form-message .error.message').show()
       else
-        $('#form-message .success.message p').html 'Message sent!'
+        $('#form-message .success.message p').html 'Message sent successfully!'
         $('#form-message .success.message').show()
     $('#form-message input').val('')
     $('#form-message input').focus()
