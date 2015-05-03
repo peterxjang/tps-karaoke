@@ -17,11 +17,10 @@ Template.admin.events
       complete: (csvResults) ->
         console.log(csvResults)
         Meteor.call 'getStaticSongs', (error, dbResults) ->
+          dbResults = _.map(dbResults, (obj) -> _.pick(obj, 'artist', 'title'))
           console.log(dbResults)
-          # newItems = csvResults.filter((item) ->
-          #   dbResults[item.artist]? and dbResults[item.title]?
-          # )
-          # console.log newItems
+          newItems = _.filter(csvResults.data, (obj) -> !_.findWhere(dbResults, obj) );
+          console.log newItems
     })
     false
 
