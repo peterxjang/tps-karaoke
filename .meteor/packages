@@ -12,7 +12,6 @@ coffeescript
 useraccounts:semantic-ui
 service-configuration
 mrt:moment
-meteorhacks:kadira
 harrison:papa-parse
 semantic:ui
 flemay:less-autoprefixer

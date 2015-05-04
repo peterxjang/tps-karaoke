@@ -21,7 +21,7 @@ Template.songinfo.loadLyrics = (artist, title) ->
           response.data[0].snippet.replace(/\n/g, '<br>')
         )
         $('.song-lyrics-results').append(
-          '<div><a href=' + response.data[0].url +
+          '<div><a href=' + response.data[0].url + ' '
           'target="_blank">View complete lyrics</a><div>'
         )
       else

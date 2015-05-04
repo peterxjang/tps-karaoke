@@ -1,14 +1,14 @@
 {
   "definitions": {
-    "accordion": true,
-    "ad": true,
+    "accordion": false,
+    "ad": false,
     "api": true,
-    "breadcrumb": true,
+    "breadcrumb": false,
     "button": true,
     "card": true,
     "checkbox": true,
     "colorize": true,
-    "comment": true,
+    "comment": false,
     "dimmer": true,
     "divider": true,
     "dropdown": true,
