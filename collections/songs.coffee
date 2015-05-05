@@ -1,4 +1,4 @@
-@Songs = new Mongo.Collection('songs');
+@Songs = new Mongo.Collection('songs')
 
 Meteor.methods
   getStaticSongs: ->
@@ -11,3 +11,9 @@ Meteor.methods
       artist: artist
       title: title
       createdAt: new Date()
+  addSongs: (songs) ->
+    console.log 'adding songs'
+    if (!Meteor.userId())
+      throw new Meteor.Error('not-authorized')
+    ids = (Songs.insert artist: song.artist, title: song.title, createdAt: new Date() for song in songs)
+    return ids

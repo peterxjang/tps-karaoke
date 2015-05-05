@@ -16,8 +16,8 @@ if (facebookConfig)
 Accounts.onCreateUser (options, user) ->
   console.log(user)
   user.profile = options.profile or {}
-  if (!user.username) 
-    # if ((user.profile || {}).name) 
+  if (!user.username)
+    # if ((user.profile || {}).name)
     if (user.profile?.name)
       user.username = user.profile.name
     else if (user.emails)
