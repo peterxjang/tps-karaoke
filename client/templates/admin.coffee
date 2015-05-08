@@ -11,14 +11,17 @@ Template.admin.helpers
 Template.admin.events
   'click .close.icon': (event) ->
     $(event.target).closest('.message').hide()
+  'click': (event) ->
+    $('.ui.message').hide()
   'submit #form-csv': (event) ->
     event.preventDefault()
-    # $('#progress-song-upload').show()
     $message = $('.ui.message')
     $message.removeClass('error')
     $message.removeClass('success')
     $message.children('p').text('')
     $message.show()
+
+
     file = $('input[type="file"]')[0].files[0]
     Papa.parse(file, {
       header: true
@@ -27,36 +30,40 @@ Template.admin.events
           dbResults = _.map(dbResults, (obj) -> _.pick(obj, 'artist', 'title'))
           newItems = _.filter(csvResults.data, (obj) -> !_.findWhere(dbResults, obj) )
           if newItems.length == 0
-            # $('#progress-song-upload').hide()
-            # $message.hide()
             $message.children('p').text('No songs to add.')
+            $message.focus()
           else
-            # $('#progress-song-upload').attr('data-total', newItems.length)
-            console.log newItems
-            Meteor.call('addSongs', newItems, (err, result) ->
-              if err
-                $message.addClass('error')
-                $message.children('p').text(err)
-                $message.show()
-              else
-                $message.addClass('success')
-                $message.children('p').text("Inserted #{result?.length} out of #{newItems.length} songs")
-                $message.show()
-                # $('.ui.success.message p').text("Inserted #{result?.length} out of #{newItems.length} songs")
-                # $('.ui.success.message').show()
-            )
-            # console.log ids
-            # $('.ui.success.message p').text("Inserted #{ids?.length} out of #{newItems.length} songs")
-            # $('.ui.success.message').show()
-
-            # errors = []
-            # for song in newItems
-            #   Meteor.call('addSong', song.artist, song.title, (err, id) ->
-            #     if err
-            #       errors.push(err)
-            #     else
-            #       $('#progress-song-upload').progress('increment')
-            #   )
+            $progress = $('#progress-song-upload')
+            $progress.progress({total: newItems.length})
+            $progress.show()
+            console.log newItems.length
+            # Meteor.call('addSongs', newItems, (err, result) ->
+            #   if err
+            #     $message.addClass('error')
+            #     $message.children('p').text(err)
+            #     $message.focus()
+            #     $message.show()
+            #   else
+            #     $message.addClass('success')
+            #     $message.children('p').text("Inserted #{result?.length} out of #{newItems.length} songs")
+            #     $message.focus()
+            #     $message.show()
+            # )
+            for song in newItems
+              # Meteor.call('addSong', song.artist, song.title, (err, result) ->
+              #   if err
+              #   else
+              #     console.log 'hi'
+              #     $progress.progress('increment')
+              # )
+              Meteor.call('addSong', song.artist, song.title)
+              $progress.progress('increment')
+              # Meteor.apply('addSong', [song.artist, song.title], wait: false, onResultReceived: (err, result) ->
+              #   if err
+              #   else
+              #     console.log 'hi'
+              #     $progress.progress('increment')
+              # )
     })
     false
 

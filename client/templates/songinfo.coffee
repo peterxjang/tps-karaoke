@@ -21,7 +21,7 @@ Template.songinfo.loadLyrics = (artist, title) ->
           response.data[0].snippet.replace(/\n/g, '<br>')
         )
         $('.song-lyrics-results').append(
-          '<div><a href=' + response.data[0].url + ' '
+          '<div><a href=' + response.data[0].url + ' ' +
           'target="_blank">View complete lyrics</a><div>'
         )
       else
@@ -38,7 +38,7 @@ Template.songinfo.loadAudioClip = (artist, title) ->
   $.ajax
     url: url
     success: (response) ->
-      items = response.tracks.items;
+      items = response.tracks.items
       if (items.length > 0)
         $('.song-preview').html(
           '<audio src="' + items[0].preview_url + '" controls></audio>'

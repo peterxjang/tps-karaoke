@@ -21,9 +21,9 @@ Template.menu.events
 
 Template.menu.rendered = ->
   Meteor.call 'getStaticSongs', (error, result) ->
-    source = result.map((item) -> 
-      artist: item.artist, 
-      title: item.title, 
+    source = result.map((item) ->
+      artist: item.artist
+      title: item.title
       artist_title: "#{item.artist} #{item.title}"
       title_artist: "#{item.title} #{item.artist}"
     )
