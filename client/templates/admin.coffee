@@ -33,37 +33,37 @@ Template.admin.events
             $message.children('p').text('No songs to add.')
             $message.focus()
           else
-            $progress = $('#progress-song-upload')
-            $progress.progress({total: newItems.length})
-            $progress.show()
+            # $progress = $('#progress-song-upload')
+            # $progress.progress({total: newItems.length})
+            # $progress.show()
             console.log newItems.length
-            # Meteor.call('addSongs', newItems, (err, result) ->
-            #   if err
-            #     $message.addClass('error')
-            #     $message.children('p').text(err)
-            #     $message.focus()
-            #     $message.show()
-            #   else
-            #     $message.addClass('success')
-            #     $message.children('p').text("Inserted #{result?.length} out of #{newItems.length} songs")
-            #     $message.focus()
-            #     $message.show()
-            # )
-            for song in newItems
-              # Meteor.call('addSong', song.artist, song.title, (err, result) ->
-              #   if err
-              #   else
-              #     console.log 'hi'
-              #     $progress.progress('increment')
-              # )
-              Meteor.call('addSong', song.artist, song.title)
-              $progress.progress('increment')
-              # Meteor.apply('addSong', [song.artist, song.title], wait: false, onResultReceived: (err, result) ->
-              #   if err
-              #   else
-              #     console.log 'hi'
-              #     $progress.progress('increment')
-              # )
+            Meteor.call('addSongs', newItems, (err, result) ->
+              if err
+                $message.addClass('error')
+                $message.children('p').text(err)
+                $message.focus()
+                $message.show()
+              else
+                $message.addClass('success')
+                $message.children('p').text("Inserted #{result?.length} out of #{newItems.length} songs")
+                $message.focus()
+                $message.show()
+            )
+            # for song in newItems
+            #   Meteor.call('addSong', song.artist, song.title, (err, result) ->
+            #     if err
+            #     else
+            #       console.log 'hi'
+            #       $progress.progress('increment')
+            #   )
+            #   # Meteor.call('addSong', song.artist, song.title)
+            #   # $progress.progress('increment')
+            #   # Meteor.apply('addSong', [song.artist, song.title], wait: false, onResultReceived: (err, result) ->
+            #   #   if err
+            #   #   else
+            #   #     console.log 'hi'
+            #   #     $progress.progress('increment')
+            #   # )
     })
     false
 
