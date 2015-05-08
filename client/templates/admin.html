@@ -6,11 +6,6 @@
       <a class="item" data-tab="third"><i class="file text icon"></i>Song database</a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
-<!--       <ul>
-        {{#each messages}}
-          <li>{{createdAt}}: {{username}} - {{text}}</li>
-        {{/each}}
-      </ul> -->
       <div class="ui feed">
       {{#each messages}}
         <div class="event">
@@ -41,13 +36,6 @@
           <i class="close icon"></i>
           <div class="header">Song upload:</div>
           <p></p>
-        </div>
-
-        <div class="ui indicating progress" id="progress-song-upload" style="display:none">
-          <div class="bar">
-            <div class="progress"></div>
-          </div>
-          <div class="label">Adding Songs</div>
         </div>
 
       </form>
