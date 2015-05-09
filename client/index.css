@@ -1,0 +1,44 @@
+/* INDEX TEMPLATE */
+.container.pusher {
+  padding-top: 20px;
+}
+
+/* HOME TEMPLATE */
+#main {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%,rgba(255,255,255,0.95) 100%), url(TPS-Logo-1.gif) center top no-repeat;
+  background-size: contain;
+  min-height: 100vh;
+}
+
+/* MENU TEMPLATE */
+#search-clicked input {
+  width: 65vw !important;
+}
+
+/* SEARCHRESULTS TEMPLATE */
+a.result {
+  font-size: 0.9em;
+}
+
+/* SONGINFO TEMPLATE */
+audio {
+  width: 100%;
+}
+
+#songinfo-modal {
+  font-size: 0.9em;
+}
+
+/* TASK TEMPLATE */
+div.checked {
+  color: #888;
+}
+
+div.checked .description {
+  text-decoration: line-through;
+}
+
+/* ADMIN TEMPLATE */
+.tab {
+  background-color: rgba(0,0,0,0) !important;
+}

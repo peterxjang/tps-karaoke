@@ -1,0 +1,16 @@
+<template name="songinfo">
+  <div class="ui small modal" id="songinfo-modal">
+    <i class="close icon"></i>
+      <div class="ui header title">{{currentSongTitle}}
+        <div class="ui sub header artist">{{currentSongArtist}}</div>
+      </div>
+    <div class="content">
+      <div class="song-preview">Audio preview...</div>
+      <div class="ui loading segment">
+        <div class="song-lyrics-results">
+          Loading lyrics...
+        </div>        
+      </div>
+    </div>
+  </div>
+</template>

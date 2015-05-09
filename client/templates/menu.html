@@ -1,0 +1,28 @@
+<template name="menu">
+  <div class="large ui fixed inverted borderless main menu">
+    <a class="item" id="back" style="display:none">
+      <i class="chevron left icon"></i>
+    </a>
+    <a class="item" id="menu">
+      <i class="content icon"></i>
+    </a>
+    <div class="fitted item" id="username">
+      {{username}}
+    </div>
+    <div class="right menu">
+      <a class="item" id="search">
+        <i class="search icon"></i>
+      </a>
+      <div class="item ui search dropdown" id="search-clicked" style="display:none">
+        <div class="ui inverted icon input">
+          <input class="prompt" type="text" placeholder="Search the database">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+      <a class="horizontally fitted item" id="settings">
+        <i class="ellipsis vertical icon"></i>
+      </a>
+    </div>
+  </div>
+</template>
