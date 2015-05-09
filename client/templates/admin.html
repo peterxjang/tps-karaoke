@@ -6,47 +6,66 @@
       <a class="item" data-tab="third"><i class="file text icon"></i>Song database</a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
-      <div class="ui feed">
-      {{#each messages}}
-        <div class="event">
-          <div class="content">
-            <div class="summary">
-              <a class="user">{{username}}</a> posted <div class="date">{{createdAt}}</div>
-            </div>
-            <div class="extra text">
-              {{text}}
-            </div>
-          </div>
-        </div>
-      {{/each}}
-      </div>
+      {{> adminMessageFeed}}
     </div>
     <div class="ui bottom attached tab segment" data-tab="second">
-      Request a genre!
-      <button class="ui button" id="button-add-genre">Add a genre</button>
+      {{> adminGenreRequests}}
     </div>
     <div class="ui bottom attached tab segment" data-tab="third">
-      <form class="ui form" id="form-csv">
-        <div class="header">Upload csv:</div>
-        <div class="field">
-          <input type="file" id="file-csv" name="file-csv" />
-        </div>
-        <button type="submit" class="ui submit button">Submit</button>
-
-        <div class="ui info message" style="display:none">
-          <i class="close icon"></i>
-          <div class="header">Song upload:</div>
-          <p></p>
-        </div>
-
-      </form>
-    </div>
-    <div class="ui divided list">
-      <ul>
-      {{#each songs}}
-        <li>{{artist}} - {{title}}</li>
-      {{/each}}
-      </ul>
+      {{> adminSongDatabase}}
     </div>
   </div>
+</template>
+
+<template name="adminMessageFeed">
+  <div class="ui feed">
+  {{#each messages}}
+    <div class="event">
+      <div class="content">
+        <div class="summary">
+          <a class="user">{{username}}</a> postedo <div class="date">{{createdAt}}</div>
+        </div>
+        <div class="extra text">
+          {{text}}
+        </div>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+</template>
+
+<template name="adminGenreRequests">
+  {{#each genres}}
+    <div class="ui indicating progress" data-value="{{votes}}" data-total="{{totalVotes}}">
+      <div class="bar">
+        <div class="progress"></div>
+      </div>
+      <div class="label">{{name}}</div>
+    </div>
+  {{/each}}
+  <button class="ui button" id="button-add-genre">
+    <i class="plus icon"></i>
+    Add a genre
+  </button>
+  <div class="ui action input" id="input-submit-genre" style="display:none">
+    <input type="text" placeholder="Name of genre">
+    <button class="ui button">Submit</button>
+  </div>
+</template>
+
+<template name="adminSongDatabase">
+  <form class="ui form" id="form-csv">
+    <div class="header">Upload csv:</div>
+    <div class="field">
+      <input type="file" id="file-csv" name="file-csv" />
+    </div>
+    <button type="submit" class="ui submit button">Submit</button>
+
+    <div class="ui info message" style="display:none">
+      <i class="close icon"></i>
+      <div class="header">Song upload:</div>
+      <p></p>
+    </div>
+
+  </form>
 </template>

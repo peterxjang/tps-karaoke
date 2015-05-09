@@ -1,4 +1,4 @@
-Template.admin.helpers
+Template.adminMessageFeed.helpers
   messages: ->
     messages = Messages.find({}, {limit: 10, sort: {createdAt: -1}})
     messages.map (message) ->
@@ -8,13 +8,25 @@ Template.admin.helpers
         createdAt: moment(message.createdAt).fromNow()
       }
 
+Template.adminGenreRequests.helpers
+  genres: ->
+    Genres.find({}, sort: {name: 1})
+  totalVotes: ->
+    Genres.find({}).fetch().reduce((a,b) -> a.votes + b.votes)
+
+
 Template.admin.events
   'click .close.icon': (event) ->
     $(event.target).closest('.message').hide()
   'click': (event) ->
     $('.ui.message').hide()
   'click #button-add-genre': (event) ->
-    console.log 'hi'
+    $('#input-submit-genre').show()
+  'click #input-submit-genre button': (event) ->
+    name = $('#input-submit-genre input').val().trim()
+    if name isnt ""
+      Meteor.call 'addGenre', name
+      $('#input-submit-genre').hide()
   'submit #form-csv': (event) ->
     event.preventDefault()
     $message = $('.ui.message')
