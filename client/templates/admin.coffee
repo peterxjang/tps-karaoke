@@ -13,6 +13,8 @@ Template.admin.events
     $(event.target).closest('.message').hide()
   'click': (event) ->
     $('.ui.message').hide()
+  'click #button-add-genre': (event) ->
+    console.log 'hi'
   'submit #form-csv': (event) ->
     event.preventDefault()
     $message = $('.ui.message')
