@@ -36,9 +36,18 @@
       <i class="plus icon"></i>
       Add a genre
     </button>
-    <form class="ui action input" id="form-submit-genre" style="display:none">
-      <input type="text" placeholder="Name of genre">
-      <button type="submit" class="ui button">Submit</button>
+    <form class="ui form" id="form-submit-genre" style="display:none">
+      <div class="ui hidden divider"></div>
+      <div class="field">
+        <div class="ui action input">
+          <input type="text" placeholder="Name of genre">
+          <div class="ui buttons">
+            <button type="submit" class="ui positive button">Save</button>
+            <div class="or"></div>
+            <div id="button-cancel" class="ui button">Cancel</div>
+          </div>
+        </div>
+      </div>
     </form>
   {{/if}}
 

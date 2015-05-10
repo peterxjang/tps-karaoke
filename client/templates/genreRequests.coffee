@@ -32,3 +32,5 @@ Template.genreRequests.events
       $('#form-submit-genre').hide()
       $('#form-submit-genre')[0].reset()
     false
+  'click #button-cancel': (event) ->
+    $('#form-submit-genre').hide()
