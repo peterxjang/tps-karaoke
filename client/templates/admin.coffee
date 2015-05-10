@@ -10,16 +10,22 @@ Template.adminMessageFeed.helpers
 
 Template.adminGenreRequests.helpers
   genres: ->
-    Genres.find({}, sort: {name: 1})
+    total = Genres.find({}).fetch().reduce(((a,b) -> a + b.votes), 0)
+    Genres.find({}, sort: {name: 1}).map((item) -> 
+      name: item.name
+      votes: item.votes
+      percent: Math.round(100 * item.votes / total) or 0
+    )
   totalVotes: ->
-    Genres.find({}).fetch().reduce((a,b) -> a.votes + b.votes)
-
+    Genres.find({}).fetch().reduce(((a,b) -> a + b.votes), 0)
 
 Template.admin.events
   'click .close.icon': (event) ->
     $(event.target).closest('.message').hide()
   'click': (event) ->
     $('.ui.message').hide()
+  'click #button-clear-votes': (event) ->
+    Meteor.call 'clearVotes'
   'click #button-add-genre': (event) ->
     $('#input-submit-genre').show()
   'click #input-submit-genre button': (event) ->
@@ -27,6 +33,9 @@ Template.admin.events
     if name isnt ""
       Meteor.call 'addGenre', name
       $('#input-submit-genre').hide()
+  'click #add-vote': (event) ->
+    name = $(event.target).attr('name')
+    Meteor.call 'addVote', name
   'submit #form-csv': (event) ->
     event.preventDefault()
     $message = $('.ui.message')

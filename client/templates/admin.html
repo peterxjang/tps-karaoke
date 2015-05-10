@@ -36,13 +36,13 @@
 
 <template name="adminGenreRequests">
   {{#each genres}}
-    <div class="ui indicating progress" data-value="{{votes}}" data-total="{{totalVotes}}">
-      <div class="bar">
-        <div class="progress"></div>
-      </div>
-      <div class="label">{{name}}</div>
-    </div>
+    <div class="label" id="add-vote" name="{{name}}">{{name}}: {{votes}} out of {{totalVotes}} ({{percent}}%)</div>
+    <div class="ui green inverted segment" style="width:{{percent}}%;margin-top:0"></div>
   {{/each}}
+  <button class="ui button" id="button-clear-votes">
+    <i class="user icon"></i>
+    Clear votes
+  </button>
   <button class="ui button" id="button-add-genre">
     <i class="plus icon"></i>
     Add a genre
