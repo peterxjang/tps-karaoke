@@ -26,26 +26,5 @@
       <h3>Request a genre from the DJ!</h3>
       {{> genreRequests}}
     </div>
-    <header>
-      <div>
-        <h1>Todo List ({{incompleteCount}})</h1>
-      </div>
-      <label class="hide-completed">
-        <input type="checkbox" checked="{{hideCompleted}}" />
-        Hide Completed Tasks
-      </label>
-      {{#if currentUser}}
-        <form class="new-task">
-          <div class="ui input">
-            <input type="text" name="text" placeholder="Type to add new tasks" />
-          </div>
-        </form>
-      {{/if}}
-    </header>
-    <div class="ui divided list">
-      {{#each tasks}}
-        {{> task}}
-      {{/each}}
-    </div>
   </div>
 </template>
