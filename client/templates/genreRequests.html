@@ -3,7 +3,7 @@
     <tbody>
       {{#each genres}}
         <tr>
-          <td class="collapsing" style="margin:0;padding:0">
+          <td class="collapsing">
             <h4 class="ui header">
               <div class="content">
                 {{name}}
@@ -18,7 +18,7 @@
             </div>
             {{/if}}
           </td>
-          <td class="collapsing" style="margin:0;padding:0">
+          <td class="collapsing">
             <div name="{{name}}" class="tiny ui button {{#if alreadyVoted}}disabled{{/if}}" id="add-vote">
               Vote
             </div>
@@ -27,6 +27,20 @@
       {{/each}}
     </tbody>
   </table>
+  {{#if isAdmin}}
+    <button class="ui button" id="button-clear-votes">
+      <i class="user icon"></i>
+      Clear votes
+    </button>
+    <button class="ui button" id="button-add-genre">
+      <i class="plus icon"></i>
+      Add a genre
+    </button>
+    <form class="ui action input" id="form-submit-genre" style="display:none">
+      <input type="text" placeholder="Name of genre">
+      <button type="submit" class="ui button">Submit</button>
+    </form>
+  {{/if}}
 
   <div class="ui page dimmer" id="error-vote">
     <div class="content">

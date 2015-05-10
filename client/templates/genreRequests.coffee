@@ -1,6 +1,5 @@
 Template.genreRequests.helpers
   genres: ->
-    console.log Meteor.user()?.profile?.isAdmin
     genres = Genres.find({}, sort: {name: 1}).fetch()
     total = genres.reduce ((a,b) -> a + b.votes), 0
     genres.map (item) ->
@@ -11,7 +10,7 @@ Template.genreRequests.helpers
   alreadyVoted: ->
     IpAddresses.find({}).fetch().length > 0
   isAdmin: ->
-    console.log isAdmin
+    Meteor.user()?.profile?.isAdmin
 
 Template.genreRequests.events
   'click #add-vote': (event) ->
@@ -21,3 +20,15 @@ Template.genreRequests.events
         console.log error
         $('#error-vote-message').html(error.reason)
         $('.page.dimmer:first').dimmer('toggle')
+  'click #button-clear-votes': (event) ->
+    Meteor.call 'clearVotes'
+  'click #button-add-genre': (event) ->
+    $('#form-submit-genre').show()
+    $('#form-submit-genre input').focus()
+  'submit #form-submit-genre': (event) ->
+    name = $('#form-submit-genre input').val().trim()
+    if name isnt ""
+      Meteor.call 'addGenre', name
+      $('#form-submit-genre').hide()
+      $('#form-submit-genre')[0].reset()
+    false

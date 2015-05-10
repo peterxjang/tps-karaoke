@@ -13,15 +13,6 @@ Template.admin.events
     $(event.target).closest('.message').hide()
   'click': (event) ->
     $('.ui.message').hide()
-  'click #button-clear-votes': (event) ->
-    Meteor.call 'clearVotes'
-  'click #button-add-genre': (event) ->
-    $('#input-submit-genre').show()
-  'click #input-submit-genre button': (event) ->
-    name = $('#input-submit-genre input').val().trim()
-    if name isnt ""
-      Meteor.call 'addGenre', name
-      $('#input-submit-genre').hide()
   'submit #form-csv': (event) ->
     event.preventDefault()
     $message = $('.ui.message')
@@ -29,7 +20,6 @@ Template.admin.events
     $message.removeClass('success')
     $message.children('p').text('')
     $message.show()
-
 
     file = $('input[type="file"]')[0].files[0]
     Papa.parse(file, {

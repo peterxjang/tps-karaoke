@@ -3,13 +3,13 @@
     <div class="ui top attached secondary pointing menu">
       <a class="active item" data-tab="first"><i class="comment icon"></i>Messages</a>
       <a class="item" data-tab="second"><i class="music icon"></i>Requests</a>
-      <a class="item" data-tab="third"><i class="file text icon"></i>Song database</a>
+      <a class="item" data-tab="third"><i class="file text icon"></i>Song db</a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
       {{> adminMessageFeed}}
     </div>
     <div class="ui bottom attached tab segment" data-tab="second">
-      {{> adminGenreRequests}}
+      {{> genreRequests}}
     </div>
     <div class="ui bottom attached tab segment" data-tab="third">
       {{> adminSongDatabase}}
@@ -31,22 +31,6 @@
       </div>
     </div>
   {{/each}}
-  </div>
-</template>
-
-<template name="adminGenreRequests">
-  {{> genreRequests}}
-  <button class="ui button" id="button-clear-votes">
-    <i class="user icon"></i>
-    Clear votes
-  </button>
-  <button class="ui button" id="button-add-genre">
-    <i class="plus icon"></i>
-    Add a genre
-  </button>
-  <div class="ui action input" id="input-submit-genre" style="display:none">
-    <input type="text" placeholder="Name of genre">
-    <button class="ui button">Submit</button>
   </div>
 </template>
 
