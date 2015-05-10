@@ -7,6 +7,8 @@ Template.genreRequests.helpers
       votes: item.votes
       percent: Math.round(100 * item.votes / total) or 0
       totalVotes: total
+  alreadyVoted: ->
+    IpAddresses.find({}).fetch().length > 0
 
 Template.genreRequests.events
   'click #add-vote': (event) ->
@@ -16,4 +18,3 @@ Template.genreRequests.events
         console.log error
         $('#error-vote-message').html(error.reason)
         $('.page.dimmer:first').dimmer('toggle')
-      

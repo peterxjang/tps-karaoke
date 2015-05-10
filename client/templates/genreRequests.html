@@ -1,15 +1,38 @@
 <template name="genreRequests">
-  {{#each genres}}
-    <div class="header" id="add-vote" name="{{name}}">{{name}}: {{votes}} out of {{totalVotes}}</div>
-    <div class="ui green inverted right aligned segment" style="width:{{percent}}%;margin-top:0">{{percent}}%</div>
-    <div class="ui page dimmer" id="error-vote">
-      <div class="content">
-        <div class="center">
-          <h2 class="ui inverted icon header">
-            <span id="error-vote-message">Hello</span>
-          </h2>
-        </div>
+  <table class="ui very basic table">
+    <tbody>
+      {{#each genres}}
+        <tr>
+          <td class="collapsing">
+            <h4 class="ui header">
+              <div class="content">
+                {{name}}
+                <div class="sub header">{{votes}} out of {{totalVotes}}</div>
+              </div>
+            </h4>
+          </td>
+          <td>
+            <div class="ui green inverted right aligned segment" style="width:{{percent}}%;margin-top:0">
+              {{percent}}%
+            </div>
+          </td>
+          <td class="collapsing">
+            <div name="{{name}}" class="tiny ui button {{#if alreadyVoted}}disabled{{/if}}" id="add-vote">
+              Vote
+            </div>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <div class="ui page dimmer" id="error-vote">
+    <div class="content">
+      <div class="center">
+        <h2 class="ui inverted icon header">
+          <span id="error-vote-message">Hello</span>
+        </h2>
       </div>
     </div>
-  {{/each}}
+  </div>
 </template>
