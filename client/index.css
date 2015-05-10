@@ -29,16 +29,17 @@ audio {
   font-size: 0.9em;
 }
 
-/* TASK TEMPLATE */
-div.checked {
-  color: #888;
-}
-
-div.checked .description {
-  text-decoration: line-through;
-}
-
 /* ADMIN TEMPLATE */
 .tab {
   background-color: rgba(0,0,0,0) !important;
+}
+
+/* GENRES TEMPLATE */
+#table-genres td {
+  padding: 4px;
+}
+
+#table-genres div.button {
+  /*color: red;*/
+  padding: 5px;
 }

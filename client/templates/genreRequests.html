@@ -1,5 +1,5 @@
 <template name="genreRequests">
-  <table class="ui very basic unstackable table">
+  <table class="ui very basic unstackable table" id="table-genres">
     <tbody>
       {{#each genres}}
         <tr>
@@ -7,7 +7,7 @@
             <h4 class="ui header">
               <div class="content">
                 {{name}}
-                <div class="sub header">{{votes}} out of {{totalVotes}}</div>
+                <div class="sub header" style="font-size:0.7em">{{votes}} out of {{totalVotes}}</div>
               </div>
             </h4>
           </td>
