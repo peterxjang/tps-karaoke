@@ -34,7 +34,11 @@ Template.admin.events
       $('#input-submit-genre').hide()
   'click #add-vote': (event) ->
     name = $(event.target).attr('name')
-    Meteor.call 'addVote', name
+    Meteor.call 'addVote', name, (error) ->
+      if error
+        console.log error
+        $('#error-vote-message').html(error.reason)
+        $('.page.dimmer:first').dimmer('toggle')
   'submit #form-csv': (event) ->
     event.preventDefault()
     $message = $('.ui.message')
