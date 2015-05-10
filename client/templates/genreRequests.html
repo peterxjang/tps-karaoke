@@ -1,0 +1,15 @@
+<template name="genreRequests">
+  {{#each genres}}
+    <div class="header" id="add-vote" name="{{name}}">{{name}}: {{votes}} out of {{totalVotes}}</div>
+    <div class="ui green inverted right aligned segment" style="width:{{percent}}%;margin-top:0">{{percent}}%</div>
+    <div class="ui page dimmer" id="error-vote">
+      <div class="content">
+        <div class="center">
+          <h2 class="ui inverted icon header">
+            <span id="error-vote-message">Hello</span>
+          </h2>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</template>
