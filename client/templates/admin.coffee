@@ -10,14 +10,13 @@ Template.adminMessageFeed.helpers
 
 Template.adminGenreRequests.helpers
   genres: ->
-    total = Genres.find({}).fetch().reduce(((a,b) -> a + b.votes), 0)
-    Genres.find({}, sort: {name: 1}).map((item) -> 
+    genres = Genres.find({}, sort: {name: 1}).fetch()
+    total = genres.reduce ((a,b) -> a + b.votes), 0
+    genres.map (item) ->
       name: item.name
       votes: item.votes
       percent: Math.round(100 * item.votes / total) or 0
-    )
-  totalVotes: ->
-    Genres.find({}).fetch().reduce(((a,b) -> a + b.votes), 0)
+      totalVotes: total
 
 Template.admin.events
   'click .close.icon': (event) ->

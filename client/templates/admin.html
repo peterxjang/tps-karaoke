@@ -36,8 +36,8 @@
 
 <template name="adminGenreRequests">
   {{#each genres}}
-    <div class="label" id="add-vote" name="{{name}}">{{name}}: {{votes}} out of {{totalVotes}} ({{percent}}%)</div>
-    <div class="ui green inverted segment" style="width:{{percent}}%;margin-top:0"></div>
+    <div class="header" id="add-vote" name="{{name}}">{{name}}: {{votes}} out of {{totalVotes}}</div>
+    <div class="ui green inverted right aligned segment" style="width:{{percent}}%;margin-top:0">{{percent}}%</div>
   {{/each}}
   <button class="ui button" id="button-clear-votes">
     <i class="user icon"></i>
