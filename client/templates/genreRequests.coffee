@@ -1,5 +1,6 @@
 Template.genreRequests.helpers
   genres: ->
+    console.log Meteor.user()?.profile?.isAdmin
     genres = Genres.find({}, sort: {name: 1}).fetch()
     total = genres.reduce ((a,b) -> a + b.votes), 0
     genres.map (item) ->
@@ -9,6 +10,8 @@ Template.genreRequests.helpers
       totalVotes: total
   alreadyVoted: ->
     IpAddresses.find({}).fetch().length > 0
+  isAdmin: ->
+    console.log isAdmin
 
 Template.genreRequests.events
   'click #add-vote': (event) ->
