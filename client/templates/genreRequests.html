@@ -1,5 +1,5 @@
 <template name="genreRequests">
-  <table class="ui very basic table">
+  <table class="ui very basic unstackable table">
     <tbody>
       {{#each genres}}
         <tr>
@@ -12,9 +12,11 @@
             </h4>
           </td>
           <td>
+            {{#if percent}}
             <div class="ui green inverted right aligned segment" style="width:{{percent}}%;margin-top:0">
               {{percent}}%
             </div>
+            {{/if}}
           </td>
           <td class="collapsing">
             <div name="{{name}}" class="tiny ui button {{#if alreadyVoted}}disabled{{/if}}" id="add-vote">
