@@ -3,7 +3,7 @@
     <tbody>
       {{#each genres}}
         <tr>
-          <td class="collapsing">
+          <td class="collapsing" style="margin:0;padding:0">
             <h4 class="ui header">
               <div class="content">
                 {{name}}
@@ -13,12 +13,12 @@
           </td>
           <td>
             {{#if percent}}
-            <div class="ui green inverted right aligned segment" style="width:{{percent}}%;margin-top:0">
-              {{percent}}%
+            <div class="ui green inverted right aligned segment" style="width:{{percent}}%;padding:5px">
+              <p>{{percent}}%</p>
             </div>
             {{/if}}
           </td>
-          <td class="collapsing">
+          <td class="collapsing" style="margin:0;padding:0">
             <div name="{{name}}" class="tiny ui button {{#if alreadyVoted}}disabled{{/if}}" id="add-vote">
               Vote
             </div>
