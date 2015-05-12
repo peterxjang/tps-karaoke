@@ -21,7 +21,15 @@ Template.genreRequests.events
         $('#error-vote-message').html(error.reason)
         $('.page.dimmer:first').dimmer('toggle')
   'click #button-clear-votes': (event) ->
-    Meteor.call 'clearVotes'
+    $(event.target).blur()
+    $('#modal-clear-votes')
+      .modal
+        closable  : false
+        onApprove : ->
+          console.log 'approved'
+          Meteor.call 'clearVotes'
+      .modal('show')
+
   'click #button-add-genre': (event) ->
     $('#form-submit-genre').show()
     $('#form-submit-genre input').focus()

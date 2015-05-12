@@ -51,6 +51,34 @@
     </form>
   {{/if}}
 
+  <div class="ui basic modal" id="modal-clear-votes">
+    <i class="close icon"></i>
+    <div class="header">
+      Clear all votes
+    </div>
+    <div class="content">
+      <div class="image">
+        <i class="trash icon"></i>
+      </div>
+      <div class="description">
+        <p>Reset all user votes to zero?</p>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="two fluid ui inverted buttons">
+        <div class="ui negative red basic inverted button">
+          <i class="remove icon"></i>
+          No
+        </div>
+        <div class="ui positive green basic inverted button">
+          <i class="checkmark icon"></i>
+          Yes
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="ui page dimmer" id="error-vote">
     <div class="content">
       <div class="center">
