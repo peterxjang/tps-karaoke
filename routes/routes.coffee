@@ -7,9 +7,6 @@ Router.configure
       # footer: {to: 'footer'},
   # }
 
-isAdmin = ->
-  Meteor.user()?.profile?.facebookEmail is 'peter.jang@yahoo.com'
-
 Router.route(
   '/',
   () -> 
@@ -26,7 +23,7 @@ Router.route(
 
 Router.onBeforeAction(
   ->
-    if (isAdmin())
+    if Meteor.user()?.profile?.isAdmin
       @redirect('admin')
     else
       @next()
@@ -36,7 +33,7 @@ Router.onBeforeAction(
 
 Router.onBeforeAction(
   ->
-    if (isAdmin())
+    if Meteor.user()?.profile?.isAdmin
       @next();
     else
       @redirect('home');

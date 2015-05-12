@@ -2,50 +2,59 @@
   <div class="ui segment" id="main">
     <div class="ui top attached secondary pointing menu">
       <a class="active item" data-tab="first"><i class="comment icon"></i>Messages</a>
-      <a class="item" data-tab="second"><i class="music icon"></i>Requests</a>
-      <a class="item" data-tab="third"><i class="file text icon"></i>Song database</a>
+      <!-- <a class="item" data-tab="second"><i class="music icon"></i>Requests</a> -->
+      <a class="item" data-tab="third"><i class="file text icon"></i>Song db</a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
-      <div class="ui feed">
-      {{#each messages}}
-        <div class="event">
-          <div class="content">
-            <div class="summary">
-              <a class="user">{{username}}</a> posted <div class="date">{{createdAt}}</div>
-            </div>
-            <div class="extra text">
-              {{text}}
-            </div>
-          </div>
+      <div class="ui stackable two column grid">
+        <div class="column">
+          {{> genreRequests}}
         </div>
-      {{/each}}
+        <div class="column">
+          {{> adminMessageFeed}}
+        </div>
       </div>
     </div>
-    <div class="ui bottom attached tab segment" data-tab="second">
-      Request a genre!
-    </div>
+    <!-- <div class="ui bottom attached tab segment" data-tab="second">
+      {{> genreRequests}}
+    </div> -->
     <div class="ui bottom attached tab segment" data-tab="third">
-      <form class="ui form" id="form-csv">
-        <div class="header">Upload csv:</div>
-        <div class="field">
-          <input type="file" id="file-csv" name="file-csv" />
-        </div>
-        <button type="submit" class="ui submit button">Submit</button>
-
-        <div class="ui info message" style="display:none">
-          <i class="close icon"></i>
-          <div class="header">Song upload:</div>
-          <p></p>
-        </div>
-
-      </form>
-    </div>
-    <div class="ui divided list">
-      <ul>
-      {{#each songs}}
-        <li>{{artist}} - {{title}}</li>
-      {{/each}}
-      </ul>
+      {{> adminSongDatabase}}
     </div>
   </div>
+</template>
+
+<template name="adminMessageFeed">
+  <div class="ui feed tall stacked segment" id="message-feed">
+  {{#each messages}}
+    <div class="event">
+      <div class="content">
+        <div class="summary">
+          <a class="user">{{username}}</a> posted <div class="date">{{createdAt}}</div>
+        </div>
+        <div class="extra text">
+          {{text}}
+        </div>
+      </div>
+    </div>
+  {{/each}}
+  <div class="ui floated right tiny button" id="button-more-messages">Load More</div>
+  </div>
+</template>
+
+<template name="adminSongDatabase">
+  <form class="ui form" id="form-csv">
+    <div class="header">Upload csv:</div>
+    <div class="field">
+      <input type="file" id="file-csv" name="file-csv" />
+    </div>
+    <button type="submit" class="ui submit button">Submit</button>
+
+    <div class="ui info message" style="display:none">
+      <i class="close icon"></i>
+      <div class="header">Song upload:</div>
+      <p></p>
+    </div>
+
+  </form>
 </template>

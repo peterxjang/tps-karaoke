@@ -19,7 +19,7 @@ facebook@1.2.0
 fastclick@1.0.3
 flemay:less-autoprefixer@1.0.1
 geojson-utils@1.0.3
-harrison:papa-parse@1.0.10
+harrison:papa-parse@1.1.0
 html-tools@1.0.4
 htmljs@1.0.4
 http@1.1.0
@@ -72,7 +72,7 @@ tracker@1.0.7
 ui@1.0.6
 underscore@1.0.3
 url@1.0.4
-useraccounts:core@1.8.1
-useraccounts:semantic-ui@1.8.1
+useraccounts:core@1.9.1
+useraccounts:semantic-ui@1.9.1
 webapp@1.2.0
 webapp-hashing@1.0.3

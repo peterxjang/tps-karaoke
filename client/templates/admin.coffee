@@ -1,6 +1,6 @@
-Template.admin.helpers
+Template.adminMessageFeed.helpers
   messages: ->
-    messages = Messages.find({}, {limit: 10, sort: {createdAt: -1}})
+    messages = Messages.find({}, {limit: Session.get('limitMessages'), sort: {createdAt: -1}})
     messages.map (message) ->
       return {
         username: message.username,
@@ -13,6 +13,9 @@ Template.admin.events
     $(event.target).closest('.message').hide()
   'click': (event) ->
     $('.ui.message').hide()
+  'click #button-more-messages': (event) ->
+    newLimit = Session.get('limitMessages') + 5;
+    Session.set('limitMessages', newLimit);
   'submit #form-csv': (event) ->
     event.preventDefault()
     $message = $('.ui.message')
@@ -20,7 +23,6 @@ Template.admin.events
     $message.removeClass('success')
     $message.children('p').text('')
     $message.show()
-
 
     file = $('input[type="file"]')[0].files[0]
     Papa.parse(file, {
