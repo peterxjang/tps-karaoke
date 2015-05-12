@@ -1,5 +1,5 @@
 Meteor.publish 'messages', (limit=3) ->
-  Messages.find({}, {limit: limit})
+  Messages.find({}, {limit: limit, sort: {createdAt: -1}})
 
 Meteor.publish 'genres', ->
   Genres.find({})
