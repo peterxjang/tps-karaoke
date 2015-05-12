@@ -1,5 +1,5 @@
-Meteor.publish 'messages', ->
-  Messages.find({})
+Meteor.publish 'messages', (limit=3) ->
+  Messages.find({}, {limit: limit})
 
 Meteor.publish 'genres', ->
   Genres.find({})

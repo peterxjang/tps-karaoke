@@ -34,10 +34,10 @@ audio {
   background-color: rgba(0,0,0,0) !important;
 }
 
-#message-feed {
+/*#message-feed {
   max-height: 300px;
   overflow: scroll;
-}
+}*/
 
 /* GENRES TEMPLATE */
 #table-genres td {

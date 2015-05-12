@@ -2,15 +2,22 @@
   <div class="ui segment" id="main">
     <div class="ui top attached secondary pointing menu">
       <a class="active item" data-tab="first"><i class="comment icon"></i>Messages</a>
-      <a class="item" data-tab="second"><i class="music icon"></i>Requests</a>
+      <!-- <a class="item" data-tab="second"><i class="music icon"></i>Requests</a> -->
       <a class="item" data-tab="third"><i class="file text icon"></i>Song db</a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
-      {{> adminMessageFeed}}
+      <div class="ui stackable two column grid">
+        <div class="column">
+          {{> genreRequests}}
+        </div>
+        <div class="column">
+          {{> adminMessageFeed}}
+        </div>
+      </div>
     </div>
-    <div class="ui bottom attached tab segment" data-tab="second">
+    <!-- <div class="ui bottom attached tab segment" data-tab="second">
       {{> genreRequests}}
-    </div>
+    </div> -->
     <div class="ui bottom attached tab segment" data-tab="third">
       {{> adminSongDatabase}}
     </div>
@@ -18,7 +25,7 @@
 </template>
 
 <template name="adminMessageFeed">
-  <div class="ui feed" id="message-feed">
+  <div class="ui feed tall stacked segment" id="message-feed">
   {{#each messages}}
     <div class="event">
       <div class="content">
