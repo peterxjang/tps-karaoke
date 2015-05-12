@@ -1,23 +1,9 @@
 Template.home.helpers
-  tasks: ->
-    if (Session.get('hideCompleted'))
-      Tasks.find({checked: {$ne: true}}, {sort: {createdAt: -1}})
-    else
-      Tasks.find({}, {sort: {createdAt: -1}})
-  hideCompleted: ->
-    Session.get('hideCompleted')
-  incompleteCount: ->
-    Tasks.find({checked: {$ne: true}}).count()
   songs: ->
     Songs.find()
 
 
 Template.home.events
-  'submit .new-task': (event) ->
-    text = event.target.text.value
-    Meteor.call('addTask', text)
-    event.target.text.value = ''
-    false
   'submit #form-message': (event) ->
     text = event.target.message.value
     Meteor.call 'addMessage', text, (err) ->

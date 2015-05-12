@@ -28,6 +28,7 @@ Accounts.onCreateUser (options, user) ->
         user.email = user.services.facebook.email
   # user.profile.facebookEmail = ((user.services || {}).facebook || {}).email
   user.profile.facebookEmail = user.services?.facebook?.email
+  user.profile.isAdmin = user.profile.facebookEmail is 'peter.jang@yahoo.com'
   user
 
 Meteor.users.deny

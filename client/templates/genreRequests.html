@@ -1,0 +1,91 @@
+<template name="genreRequests">
+  <table class="ui very basic unstackable table" id="table-genres">
+    <tbody>
+      {{#each genres}}
+        <tr>
+          <td class="collapsing">
+            <h4 class="ui header">
+              <div class="content">
+                {{name}}
+                <div class="sub header" style="font-size:0.7em">{{votes}} out of {{totalVotes}}</div>
+              </div>
+            </h4>
+          </td>
+          <td>
+            {{#if percent}}
+            <div class="ui green inverted right aligned segment" style="width:{{percent}}%;padding:5px">
+              <p>{{percent}}%</p>
+            </div>
+            {{/if}}
+          </td>
+          <td class="collapsing">
+            <div name="{{name}}" class="tiny ui button {{#if alreadyVoted}}disabled{{/if}}" id="add-vote">
+              Vote
+            </div>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{#if isAdmin}}
+    <button class="ui button" id="button-clear-votes">
+      <i class="user icon"></i>
+      Clear votes
+    </button>
+    <button class="ui button" id="button-add-genre">
+      <i class="plus icon"></i>
+      Add a genre
+    </button>
+    <form class="ui form" id="form-submit-genre" style="display:none">
+      <div class="ui hidden divider"></div>
+      <div class="field">
+        <div class="ui action input">
+          <input type="text" placeholder="Name of genre">
+          <div class="ui buttons">
+            <button type="submit" class="ui positive button">Save</button>
+            <div class="or"></div>
+            <div id="button-cancel" class="ui button">Cancel</div>
+          </div>
+        </div>
+      </div>
+    </form>
+  {{/if}}
+
+  <div class="ui basic modal" id="modal-clear-votes">
+    <i class="close icon"></i>
+    <div class="header">
+      Clear all votes
+    </div>
+    <div class="content">
+      <div class="image">
+        <i class="trash icon"></i>
+      </div>
+      <div class="description">
+        <p>Reset all user votes to zero?</p>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="two fluid ui inverted buttons">
+        <div class="ui negative red basic inverted button">
+          <i class="remove icon"></i>
+          No
+        </div>
+        <div class="ui positive green basic inverted button">
+          <i class="checkmark icon"></i>
+          Yes
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="ui page dimmer" id="error-vote">
+    <div class="content">
+      <div class="center">
+        <h2 class="ui inverted icon header">
+          <span id="error-vote-message">Hello</span>
+        </h2>
+      </div>
+    </div>
+  </div>
+</template>
