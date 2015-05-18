@@ -1,0 +1,37 @@
+<template name="announcements">
+  {{#if isAdmin}}
+  <form class="ui form" id="form-csv">
+    <div class="field">
+      <div class="ui segment">
+        <div id="new-announcement" class="editable" style="outline:none"></div>
+      </div>
+    </div>
+    <div class="ui floated right tiny button" id="add-announcement">Add an announcement</div>
+  </form>
+  {{/if}}
+
+  <div class="ui comments">
+    {{#each announcements}}
+    <div class="comment">
+      <a class="avatar">
+        <img src="TPS-Logo-1.gif">
+      </a>
+      <div class="content">
+        <a class="author" style="">The People's Stage</a>
+        <div class="metadata">
+          <div class="date">{{createdAt}}</div>
+        </div>
+        <div class="text {{#if isAdmin}}editable{{/if}}">
+          {{{text}}}
+        </div>
+        {{#if isAdmin}}
+        <div class="actions">
+          <a href="">Edit</a>
+          <a href="">Delete</a>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</template>

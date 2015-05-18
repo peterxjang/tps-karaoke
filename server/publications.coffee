@@ -13,3 +13,6 @@ Meteor.publish 'ipAddresses', ->
 # Meteor.publish('songs', function() {
 #   return Songs.find({}, {fields: {'artist': 1, 'title': 1}});
 # })
+
+Meteor.publish 'announcements', (limit=10)->
+  Announcements.find({}, {limit: limit})

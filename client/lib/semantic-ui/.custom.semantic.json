@@ -8,7 +8,7 @@
     "card": true,
     "checkbox": true,
     "colorize": true,
-    "comment": false,
+    "comment": true,
     "dimmer": true,
     "divider": true,
     "dropdown": true,

@@ -14,8 +14,8 @@ Template.admin.events
   'click': (event) ->
     $('.ui.message').hide()
   'click #button-more-messages': (event) ->
-    newLimit = Session.get('limitMessages') + 5;
-    Session.set('limitMessages', newLimit);
+    newLimit = Session.get('limitMessages') + 5
+    Session.set('limitMessages', newLimit)
   'submit #form-csv': (event) ->
     event.preventDefault()
     $message = $('.ui.message')

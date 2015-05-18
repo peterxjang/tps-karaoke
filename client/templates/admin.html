@@ -1,8 +1,8 @@
 <template name="admin">
   <div class="ui segment" id="main">
     <div class="ui top attached secondary pointing menu">
-      <a class="active item" data-tab="first"><i class="comment icon"></i>Messages</a>
-      <!-- <a class="item" data-tab="second"><i class="music icon"></i>Requests</a> -->
+      <a class="active item" data-tab="first"><i class="comments icon"></i>Messages</a>
+      <a class="item" data-tab="second"><i class="announcement icon"></i>Announcements</a>
       <a class="item" data-tab="third"><i class="file text icon"></i>Song db</a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
@@ -15,9 +15,9 @@
         </div>
       </div>
     </div>
-    <!-- <div class="ui bottom attached tab segment" data-tab="second">
-      {{> genreRequests}}
-    </div> -->
+    <div class="ui bottom attached tab segment" data-tab="second">
+      {{> announcements}}
+    </div>
     <div class="ui bottom attached tab segment" data-tab="third">
       {{> adminSongDatabase}}
     </div>
@@ -25,6 +25,25 @@
 </template>
 
 <template name="adminMessageFeed">
+<!--   <div class="ui comments tall stacked segment" id="message-feed">
+    {{#each messages}}
+    <div class="comment">
+      <a class="avatar">
+        <i class="big blue user icon"></i>
+      </a>
+      <div class="content">
+        <a class="author" style="">{{username}}</a>
+        <div class="metadata">
+          <div class="date">{{createdAt}}</div>
+        </div>
+        <div class="text">
+          {{text}}
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  <div class="ui floated right tiny button" id="button-more-messages">Load More</div>
+  </div> -->
   <div class="ui feed tall stacked segment" id="message-feed">
   {{#each messages}}
     <div class="event">
