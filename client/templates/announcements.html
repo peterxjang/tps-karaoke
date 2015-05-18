@@ -6,7 +6,7 @@
         <div id="new-announcement" class="editable" style="outline:none"></div>
       </div>
     </div>
-    <div class="ui floated right tiny button" id="add-announcement">Add an announcement</div>
+    <div class="ui floated right tiny button" id="create-announcement">Add an announcement</div>
   </form>
   {{/if}}
 
@@ -26,8 +26,8 @@
         </div>
         {{#if isAdmin}}
         <div class="actions">
-          <a href="">Edit</a>
-          <a href="">Delete</a>
+          <a class="update-announcement" href="">Save changes</a>
+          <a class="delete-announcement" href="">Delete</a>
         </div>
         {{/if}}
       </div>
